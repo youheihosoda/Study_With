@@ -1,0 +1,2 @@
+class StudyText < ApplicationRecord
+end
