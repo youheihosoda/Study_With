@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_063422) do
+ActiveRecord::Schema.define(version: 2021_06_08_074826) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_063422) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
-    t.string "profile_image"
+    t.string "profile_image_id"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
