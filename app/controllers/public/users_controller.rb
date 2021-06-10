@@ -2,6 +2,9 @@ class Public::UsersController < ApplicationController
 
 def index
   @user = current_user
+  @time = Time.now
+  @timeInteger = @time.tv_sec
+  @timeFloat = @t.to_f
 end
 
 def show
@@ -33,6 +36,10 @@ def fllowing
 end
 
 def fllowers
+end
+
+def stopwatch
+
 end
 
 private
