@@ -4,7 +4,7 @@ def index
   @user = current_user
   @start_time = Time.now
   @end_time = Time.now
-  @count_time = @end_time - @start_time
+  @count_time = @end_time-@start_time
   @timeFloat = @t.to_f
 end
 
@@ -49,6 +49,7 @@ end
 private
 def user_params
   params.require(:user).permit(:name, :introduction, :profile_image)
+
 end
 
 
