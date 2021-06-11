@@ -2,8 +2,9 @@ class Public::UsersController < ApplicationController
 
 def index
   @user = current_user
-  @time = Time.now
-  @timeInteger = @time.tv_sec
+  @start_time = Time.now
+  @end_time = Time.now
+  @count_time = @end_time - @start_time
   @timeFloat = @t.to_f
 end
 
@@ -38,8 +39,11 @@ end
 def fllowers
 end
 
-def stopwatch
-
+def create
+@count_time = CountTime.new
+@count_time_user.id = current_user.id
+@count_time.save
+ redirect_to public_users_path
 end
 
 private

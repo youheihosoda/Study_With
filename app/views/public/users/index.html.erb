@@ -9,7 +9,10 @@
      <td><%=link_to "プロフィール編集", edit_public_user_path(@user) %></td>
 </table>
 
-<%= @time %>
-<%= @timeInteger %>
-<%= @timeFloat %>
+<%= form_with model:@study_time, local:true do |f| %>
+<%= f.submit 'start' %>
+<%end%>
 
+<%= form_with model:@study_time, local:true do |f| %>
+<%= f.submit 'stop' %>
+<%end%>
