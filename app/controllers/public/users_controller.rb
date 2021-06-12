@@ -2,10 +2,7 @@ class Public::UsersController < ApplicationController
 
 def index
   @user = current_user
-  @start_time = Time.now
-  @end_time = Time.now
-  @count_time = @end_time-@start_time
-  @timeFloat = @t.to_f
+  @study_time = StudyTime.new
 end
 
 def show
@@ -40,16 +37,31 @@ def fllowers
 end
 
 def create
-@count_time = CountTime.new
-@count_time_user.id = current_user.id
-@count_time.save
- redirect_to public_users_path
+  # params[:event] == "start"
+  @study_time = StudyTime.new
+  @study_time.start_time = Time.now
+  @study_time.user_id = current_user.id
+  # @study_time = StudyTime.where(user_id: current_user.id , end_time: nil).where.not(start_time: nil).first
+  if @study_time.start_time != nil
+   @study_time.end_time = Time.now
+  else
+   # 保存せずエラーにするとか。
+   @study_time = StudyTime.new
+   @study_time.start_time = Time.now
+   @study_time.user_id = current_user.id
+  end
+   @study_time.save
+
+  if @study_time.save
+  redirect_to public_users_path
+  else
+   redirect_to edit_public_user_path(current_user.id)
+  end
 end
 
 private
 def user_params
   params.require(:user).permit(:name, :introduction, :profile_image)
-
 end
 
 
