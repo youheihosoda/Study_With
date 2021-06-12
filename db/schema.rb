@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2021_06_08_074826) do
     t.integer "study_text_id"
     t.integer "study_method_id"
     t.integer "time"
+    t.integer "start_time"
+    t.integer "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -9,15 +9,10 @@
      <td><%=link_to "プロフィール編集", edit_public_user_path(@user) %></td>
 </table>
 
-<%= form_with model:@study_time do |f| %>
-<%= f.time_field :time %>
+<%= form_with(url:public_users_path,local:true)  do |f| %>
+<%= hidden_field_tag :event, "start" %>
 <%= f.submit 'start' %>
 <% end %>
 
-<%= form_with model:@study_time do |f| %>
-<%= f.time_field :time %>
-<%= f.submit 'stop' %>
-<% end %>
 
-<%= @count_time %>
 
