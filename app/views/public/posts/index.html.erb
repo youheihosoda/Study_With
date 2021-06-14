@@ -1,0 +1,23 @@
+<table>
+ <tr>
+  <td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+ </tr>
+   <tr>
+    <td><%= @user.name %></td>
+   </tr>
+    <tr>
+     <td><%=link_to "プロフィール編集", edit_public_user_path(@user) %></td>
+</table>
+
+
+<% if @state.nil? || @state == "end" %>
+  <%= form_with(model:@study_time, url:public_study_times_path,local:true)  do |f| %>
+  <%= hidden_field_tag :event, "start" %>
+  <%= f.submit 'start' %>
+  <% end %>
+<% else %>
+  <%= form_with(model:@study_time, url:public_study_time_path(@study_time),local:true)  do |f| %>
+  <%= hidden_field_tag :event, "end" %>
+  <%= f.submit 'end' %>
+  <% end %>
+<% end %>
