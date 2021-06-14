@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_074826) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.text "post_text"
+    t.integer "study_time_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_074826) do
     t.integer "time"
     t.integer "start_time"
     t.integer "end_time"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
