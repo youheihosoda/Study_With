@@ -6,6 +6,8 @@ class Public::PostsController < ApplicationController
  def index
   @user = current_user
   @study_time = StudyTime.new
+  @study_times = StudyTime.all
+  @posts = Post.all
  end
 
  def create
@@ -16,9 +18,8 @@ class Public::PostsController < ApplicationController
  end
 
  def new
-  # @study_time = StudyTime.find(params[:id])
-  # @study_time_count = @study_time.end_time -  @study_time.start_time
   @post = Post.new
+  @study_time = StudyTime.find(params[:study_time_id])
  end
 
  def destroy
@@ -29,6 +30,6 @@ class Public::PostsController < ApplicationController
 
 
  def post_params
-  params.require(:post).permit(:post_text)
+  params.require(:post).permit(:post_text,:study_time_id)
  end
 end

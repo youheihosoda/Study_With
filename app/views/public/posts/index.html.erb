@@ -21,3 +21,13 @@
   <%= f.submit 'end' %>
   <% end %>
 <% end %>
+
+
+<% @posts.each do |post| %>
+ <p><%= post.post_text %>
+<% hour = ((post.study_time.end_time-post.study_time.start_time)/60/60).to_i %>
+<% min = (((post.study_time.end_time-post.study_time.start_time)-(hour*60*60))/60).to_i %>
+<% sec = ((post.study_time.end_time-post.study_time.start_time)%60).to_i %>
+ID:<%=post.study_time.id%>&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒<br>
+　</p>
+<% end %>
