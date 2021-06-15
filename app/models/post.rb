@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_one :study_time
+  belongs_to :study_time, dependent: :destroy
   belongs_to :user
 end
 

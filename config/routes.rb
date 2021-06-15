@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :public do
    resources :users, only: [:index, :create, :update, :destroy, :edit, :show]
-    resources :study_times, only: [:create, :index, :update,:new]
     resources :posts, only:[:create,:index,:show,:update,:new]
+    resources :study_times, only: [:create, :index, :update,:new]
   end
  end
