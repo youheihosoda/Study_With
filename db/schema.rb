@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_074826) do
+ActiveRecord::Schema.define(version: 2021_06_16_094404) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2021_06_08_074826) do
   create_table "favorites", force: :cascade do |t|
     t.integer "post_id"
     t.integer "post_comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "learning_details", force: :cascade do |t|
+    t.text "detail"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,23 +63,17 @@ ActiveRecord::Schema.define(version: 2021_06_08_074826) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "study_methods", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "study_texts", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "study_times", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "study_text_id"
-    t.integer "study_method_id"
-    t.integer "time"
+    t.text "study_method"
+    t.integer "sum_time"
     t.integer "start_time"
     t.integer "end_time"
     t.integer "post_id"

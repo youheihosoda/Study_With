@@ -1,2 +1,0 @@
-class StudyMethod < ApplicationRecord
-end

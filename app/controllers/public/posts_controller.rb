@@ -28,8 +28,8 @@ class Public::PostsController < ApplicationController
  def update
  end
 
-
+private
  def post_params
-  params.require(:post).permit(:post_text,:study_time_id)
+  params.require(:post).permit(:post_text,:study_time_id,:study_text_id,:learning_detail_id)
  end
 end

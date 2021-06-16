@@ -11,12 +11,12 @@
 
 
 <% if @state.nil? || @state == "end" %>
-  <%= form_with(model:@study_time, url:public_study_times_path,local:true)  do |f| %>
+  <%= form_with(model:@study_time, url:start_time_public_study_times_path,local:true)  do |f| %>
   <%= hidden_field_tag :event, "start" %>
   <%= f.submit 'start' %>
   <% end %>
 <% else %>
-  <%= form_with(model:@study_time, url:public_study_time_path(@study_time),local:true)  do |f| %>
+  <%= form_with(model:@study_time, url:stop_time_public_study_time_path(@study_time),local:true)  do |f| %>
   <%= hidden_field_tag :event, "end" %>
   <%= f.submit 'end' %>
   <% end %>
