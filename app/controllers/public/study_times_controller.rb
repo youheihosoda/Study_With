@@ -1,6 +1,6 @@
 class Public::StudyTimesController < ApplicationController
 
- def create
+ def start_time
   @study_time = StudyTime.new(study_time_params)
   @state = params[:event]
   return redirect_to public_posts_path if ((@state == "start") && (params[:start] == "start"))
@@ -13,7 +13,7 @@ class Public::StudyTimesController < ApplicationController
   render template: 'public/posts/index'
  end
 
- def update
+ def stop_time
   @study_time = StudyTime.find(params[:id])
   return redirect_to public_users_path if ((@state == "end") && (params[:event] == "end"))
   @state = params[:event]
@@ -24,7 +24,7 @@ class Public::StudyTimesController < ApplicationController
 
  private
   def study_time_params
-    # params.require(:study_time).permit(:user)
+    # params.require(:study_time).permit(:study_method)
   end
 
 

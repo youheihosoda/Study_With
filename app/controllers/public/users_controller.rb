@@ -10,6 +10,10 @@ end
 
 def edit
   @user = User.find(params[:id])
+  @study_text = StudyText.new
+  @learning_detail = LearningDetail.new
+  @study_texts = StudyText.all
+  @learning_details = LearningDetail.all
    if @user!=current_user
     redirect_to public_users_path(current_user)
    end
@@ -42,7 +46,7 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:name, :introduction, :profile_image)
+  params.require(:user).permit(:name, :introduction, :profile_image,:study_text_id)
 end
 
 
