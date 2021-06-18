@@ -1,0 +1,11 @@
+<%= form_with(model:@study_form, url:public_study_time_path(@study_time),local:true, method: :patch)  do |f| %>
+    <%= f.text_field :study_method %>
+    <%= f.hidden_field :study_time_id, value: @study_time.id %>
+    <%= f.collection_check_boxes(:study_text_ids, @study_texts, :id, :name) %>
+    <%= f.select :learning_detail_id, @learning_details.map{|d|[d.detail , d.id]} %>
+    <%= f.submit "投稿する" %>
+ <%end%>
+
+ 学習時間 <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i%>時間
+<%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60).to_i%>分
+<%=((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i%>秒

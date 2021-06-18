@@ -18,7 +18,7 @@ class Public::LearningDetailsController < ApplicationController
 
   private
   def learning_detail_params
-  params.require(:learning_detail).permit(:user_id,:detail)
+  params.require(:learning_detail).permit(:user_id,:detail,:study_time)
   end
 
 end

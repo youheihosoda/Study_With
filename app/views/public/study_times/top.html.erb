@@ -1,0 +1,35 @@
+<table>
+ <tr>
+  <td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+ </tr>
+   <tr>
+    <td><%= @user.name %></td>
+   </tr>
+    <tr>
+     <td><%=link_to "プロフィール編集", edit_public_user_path(@user) %></td>
+</table>
+
+
+<% if @state.nil? || @state == "end" %>
+  <%= form_with(model: @study_time, url: start_time_public_study_times_path, local: true )  do |f| %>
+  <%= hidden_field_tag :event, "start" %>
+  <%= f.submit 'start' %>
+  <% end %>
+<% else %>
+  <%= form_with(model: @study_time, url: stop_time_public_study_time_path(@study_time), local: true, method: :patch)  do |f| %>
+  <%= hidden_field_tag :event, "end" %>
+  <%= f.submit 'end' %>
+  <% end %>
+<% end %>
+
+
+<% @study_times.each do |s| %>
+ <p><%= s.study_method %>
+<% hour = ((s.end_time.to_i-s.start_time.to_i)/60/60).to_i %>
+<% min = (((s.end_time.to_i-s.start_time.to_i)-(hour*60*60))/60).to_i %>
+<% sec = ((s.end_time.to_i-s.start_time.to_i)%60).to_i %>
+ID:<%=s.id%>&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒<br>
+<%= link_to "Destroy",  public_study_time_path(s.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
+　</p>
+
+<% end %>

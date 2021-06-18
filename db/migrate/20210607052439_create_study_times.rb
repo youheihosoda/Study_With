@@ -3,10 +3,10 @@ class CreateStudyTimes < ActiveRecord::Migration[5.2]
     create_table :study_times do |t|
       t.integer :user_id
       t.text :study_method
-      t.integer :sum_time
       t.integer :start_time
       t.integer :end_time
-      t.integer :post_id
+      t.integer :learning_detail_id
+      t.integer :study_time_text_id
       t.timestamps
     end
   end
