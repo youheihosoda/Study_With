@@ -1,0 +1,11 @@
+ <%= form_with(model:@study_time, url:public_study_time_path(@study_time),local:true)  do |f| %>
+   <%= f.text_field :study_method %>
+   <%= f.hidden_field :study_time_id, value: @study_time.id %>
+
+   <%= f.submit "投稿する" %>
+ <%end%>
+
+ 学習時間 <%=((@study_time.end_time-@study_time.start_time)/60/60).to_i%>時間
+<%=((@study_time.end_time-@study_time.start_time)/60).to_i%>分
+<%=((@study_time.end_time-@study_time.start_time)%60).to_i%>秒
+<br><%= @study_time.end_time-@study_time.start_time %>

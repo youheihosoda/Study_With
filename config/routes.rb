@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   namespace :public do
    resources :users, only: [:index, :create, :update, :destroy, :edit, :show]
     resources :posts, only:[:create,:index,:show,:update,:new]
-    resources :study_times, only: [:create, :index, :update,:new]do
+    resources :study_times, only: [:create, :index, :update,:new, :edit,:destroy]do
      member do
      patch :stop_time
      end
      collection do
      post  :start_time
+     get :top
      end
      end
     resources :study_texts, only:[:create, :update,:destroy]
