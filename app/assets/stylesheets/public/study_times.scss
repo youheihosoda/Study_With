@@ -1,3 +1,45 @@
 // Place all the styles related to the public/study_times controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.icon{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 200px;  /* 縦横を同じ値にする */
+  height: 200px;  /* 縦横を同じ値にする */
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+}
+
+.timebtn{
+  position: absolute;
+  padding-left:70px;
+  padding-top:70px;
+}
+
+.col-sm-4{
+  position: relative;
+}
+
+.tweet{
+    padding: 30px 30px;
+    color: #000000;
+    background: #CD853F;
+    border-bottom: solid 6px #B8860B;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.background{
+  background-color: #FFFFDD
+}
+
+.tweet_icon{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 40px;  /* 縦横を同じ値にする */
+  height: 40px;  /* 縦横を同じ値にする */
+  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+}
+
+.post_imaage{
+   display:flex;
+}

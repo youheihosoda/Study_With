@@ -18,5 +18,6 @@ Rails.application.routes.draw do
      end
     resources :study_texts, only:[:create, :update,:destroy]
     resources :learning_details, only:[:create,:update,:destroy,:new]
+     resources :photos, only: [:new, :create, :destroy]
   end
  end
