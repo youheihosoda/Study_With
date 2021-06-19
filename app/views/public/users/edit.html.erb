@@ -1,45 +1,56 @@
- <%= form_with model:@user, url:public_user_path(@user), local:true do |f| %>
- <table>
-  <tr>
-  <td><%= f.label :name %></td>
-  <td><%= f.text_field :name %></td>
-  </tr>
-  <tr>
-  <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></td>
-  </tr>
-  <tr>
-  <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
-  </tr>
-  <tr>
-   <td><%= f.label :"自己紹介" %></td>
-   <td><%= f.text_area :introduction %></td>
-  </tr>
-  </table>
-  <div>
-  <%= f.submit "変更を保存" %>
+<div class="background">
+  <div class="container">
+    <%= form_with model:@user, url:public_user_path(@user), local:true do |f| %>
+    <div class="row">
+     <div class="col-sm-4">
+      <table>
+       <tr>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></td>
+       </tr>
+       <tr>
+        <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
+       </tr>
+      </table>
+     </div>
+      <div class="col-sm-4">
+       <table>
+        <tr>
+         <td><%= f.label :name %></td>
+         <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+         <td><%= f.label :"自己紹介" %></td>
+         <td><%= f.text_area :introduction %></td>
+        </tr>
+       </table><%= f.submit "変更を保存", class:'chenge' %>
+    <% end %>
+
+    <%= form_with model:@study_text, url:public_study_texts_path, local:true do |f| %>
+    <table>
+     <tr>
+      <td><%= f.text_field :name %></td>
+      <td><%= f.submit "参考書を追加" %></td>
+     </tr>
+    <% end %>
+    </table>
+    <% @study_texts.each do |t| %>
+     <%= t.name %>
+     <%= link_to "Destroy", public_study_text_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
+    <% end %>
+
+    <%= form_with model:@learning_detail, url:public_learning_details_path, local:true do |f| %>
+     <tr>
+      <td><%= f.text_field :detail %></td>
+      <td><%= f.submit "学習内容を追加" %></td>
+     </tr>
+    <% end %>
+
+    <% @learning_details.each do |t| %>
+     <%= t.detail %>
+     <%= link_to "Destroy", public_learning_detail_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
+    <% end %>
+    </div>
+   </div>
   </div>
-  <% end %>
-
-  <%= form_with model:@study_text, url:public_study_texts_path, local:true do |f| %>
-  <tr>
-  <td><%= f.text_field :name %></td>
-  <td><%= f.submit "参考書を追加" %></td>
-  </tr>
-  <% end %>
-
-  <% @study_texts.each do |t| %>
-  <%= t.name %>
-  <%= link_to "Destroy", public_study_text_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
-  <% end %>
-
-   <%= form_with model:@learning_detail, url:public_learning_details_path, local:true do |f| %>
-  <tr>
-  <td><%= f.text_field :detail %></td>
-  <td><%= f.submit "学習内容を追加" %></td>
-  </tr>
-  <% end %>
-
-  <% @learning_details.each do |t| %>
-  <%= t.detail %>
-   <%= link_to "Destroy", public_learning_detail_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
-  <% end %>
+ </div>
+ <%= link_to "", 'javascript:history.back()', class: "fas fa-undo" %>
