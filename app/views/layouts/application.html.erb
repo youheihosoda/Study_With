@@ -22,7 +22,7 @@
         　<% if user_signed_in? %>
         　<li><%= link_to " TOP", top_public_study_times_path, class:"fas fa-users nav-link text-light"%></li>
         　<li><%= link_to " プロフィール", class:"fas fa-book-open nav-link text-light"%></li>
-        　<li><%= link_to " 学習時間", class:"fas fa-home nav-link text-light"%></li>
+        　<li><%= link_to " 学習時間", public_study_times_path, class:"fas fa-home nav-link text-light"%></li>
         　<li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %></li>
         　<% else %>
         　<li><%= link_to " sign up", new_user_registration_path, class:"fas fa-user-plus nav-link text-light"%></li>
