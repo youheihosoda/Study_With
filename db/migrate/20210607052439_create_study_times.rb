@@ -7,6 +7,7 @@ class CreateStudyTimes < ActiveRecord::Migration[5.2]
       t.integer :end_time
       t.integer :learning_detail_id
       t.integer :study_time_text_id
+      t.integer :learning_time
       t.timestamps
     end
   end

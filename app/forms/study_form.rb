@@ -14,7 +14,7 @@ class StudyForm
   validates :study_method, presence: true, on: :update
   validates :study_time_id, presence: true, on: :update
   validates :learning_detail_id, presence: true, on: :update
-
+  validates :photo_images, presence: true, on: :update
   # belongs_to :photo
   # accepts_attachments_for :photo_images, attachment: :image
 end

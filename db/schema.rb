@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_041215) do
     t.integer "end_time"
     t.integer "learning_detail_id"
     t.integer "study_time_text_id"
+    t.integer "learning_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

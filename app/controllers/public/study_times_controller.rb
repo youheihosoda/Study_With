@@ -1,5 +1,32 @@
 class Public::StudyTimesController < ApplicationController
 
+ def index
+  @day = params[:day] ? Date.parse(params[:day]) : Time.zone.today
+
+
+  beginning_of_month = @day.beginning_of_month
+  end_of_month = @day.end_of_month
+
+
+  @study_times = StudyTime.where("updated_at >= ? and updated_at <= ?", beginning_of_month, end_of_month)
+  @study_time_hash = {}
+  @study_times.each do |study_time|
+   if @study_time_hash[study_time.learning_detail.detail]
+    @study_time_hash[study_time.learning_detail.detail] = @study_time_hash[study_time.learning_detail.detail]+study_time.learning_time
+   else
+    @study_time_hash[study_time.learning_detail.detail] = study_time.learning_time
+   end
+  end
+
+  @study_time_array = []
+  @study_time_hash.each do |k,v|
+   @study_time_array.push([k,v])
+  end
+
+  #@month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
+  #@study_time_months = StudyTime.where(updated_at: @month.all_month)
+ end
+
  def start_time
   @study_time = StudyTime.new
   @state = params[:event]
@@ -16,7 +43,9 @@ class Public::StudyTimesController < ApplicationController
   @study_time = StudyTime.find(params[:id])
   return redirect_to public_users_path if ((@state == "end") && (params[:event] == "end"))
   @state = params[:event]
-  @study_time.update(end_time: Time.now.to_i)
+  @study_time.update(end_time: Time.now.to_i, learning_time: @study_time.end_time.to_i-@study_time.start_time.to_i)
+  # @study_time.update(learning_time: (@study_time.end_time.to_i-@study_time.start_time.to_i)/60.floor)
+  @study_time.update(learning_time: @study_time.end_time.to_i-@study_time.start_time.to_i)
   @user = current_user
   redirect_to edit_public_study_time_path(study_time_id:params[:id])
  end
@@ -25,11 +54,15 @@ class Public::StudyTimesController < ApplicationController
   @user = current_user
   @study_time = StudyTime.find(params[:id])
   @study_time.update(study_method: params[:study_form][:study_method], learning_detail_id:  params[:study_form][:learning_detail_id])
- # 写真が投稿されないと投稿できない
+
+
   @study_time.photos.destroy_all
-  params[:study_form][:photo_images].each do |post_image|
-  @study_time.photos.create!(image: post_image)
+  if params[:study_form][:photo_images].present?
+   params[:study_form][:photo_images].each do |post_image|
+    @study_time.photos.create!(image: post_image)
+   end
   end
+
 
   params[:study_form][:study_text_ids].delete_at(0)
   text_ids =  params[:study_form][:study_text_ids]
@@ -66,6 +99,8 @@ end
   @study_time.destroy
   redirect_to top_public_study_times_path
  end
+
+
 
  private
   def study_time_params
