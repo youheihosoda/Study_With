@@ -1,0 +1,69 @@
+<div class="background">
+  <div class="container">
+   <div class="row">
+     <div class="col-sm-4">
+      <table>
+        <tr>
+          <td><%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",class:"icon") %></td>
+        </tr>
+        <tr>
+          <td align="center"><%= @user.name%></td>
+        </tr>
+        <tr>
+        <td><%= render 'public/relationships/follow_button', user: @user %></td>
+        </tr>
+        <tr>
+         <td><%= link_to public_user_followings_path(@user) do %>
+          フォロー数:<%= @user.followings.count %></td>
+          <% end %>
+          <td><%= link_to public_user_followers_path(@user) do %>
+            フォロワー数:<%= @user.followers.count %></td>
+            <% end %>
+        </tr>
+        <tr>
+          <td align="center"><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td align="center"><%=link_to "プロフィール編集", edit_public_user_path(@user) %></td>
+        </tr>
+      </table>
+    </div>
+     <div class="col-sm-8">
+        <% @study_times.each do |study_time| %>
+          <% hour = ((study_time.end_time.to_i-study_time.start_time.to_i)/60/60).to_i %>
+          <% min = (((study_time.end_time.to_i-study_time.start_time.to_i)-(hour*60*60))/60).to_i %>
+          <% sec = ((study_time.end_time.to_i-study_time.start_time.to_i)%60).to_i %>
+            <table class=tweet width="500">
+              <tr>
+                <td><%= attachment_image_tag(study_time.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class:"tweet_icon" )%>
+                 &nbsp;&nbsp;<%= @user.name %> &nbsp;&nbsp; &nbsp;&nbsp;<%= study_time.updated_at%>id<%= @user.id%></td>
+              </tr>
+              <tr>
+                <td>&nbsp;&nbsp;<%= study_time.study_method %></td>
+              </tr>
+              <tr>
+                <td align="center">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
+              </tr>
+              <tr>
+                <td align="center">&nbsp;学習内容&nbsp;<%=study_time.learning_detail.detail %></td>
+              </tr>
+              <tr>
+                <td align="center">使った参考書</td>
+              </tr>
+                <% study_time.study_texts.each do |study_text| %>
+                 <td align="center"><%= study_text.name %></td>
+                <% end %>
+                <% study_time.photos.each do |photo| %>
+              <tr>
+                <td><%= attachment_image_tag photo, :image, size:'100x100', class:"post_image" %></td>
+              </tr>
+                <% end %>
+              <tr>
+                <td align="center"><%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %></td>
+              </tr>
+            </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
  <p id="notice"><%= notice %></p>
 
 <h1>学習時間一覧</h1><!-- 追記 -->
+
   <%= column_chart @study_time_array %>
 <%= link_to "前の月のリンク",public_study_times_path(day:@day.prev_month) %>
 <%= link_to "次の月のリンク",public_study_times_path(day:@day.next_month) %>

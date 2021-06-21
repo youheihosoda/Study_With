@@ -6,6 +6,10 @@ def index
 end
 
 def show
+  @user = User.find(params[:id])
+  @study_times = @user.study_times
+  # @study_times = StudyTime.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+  @learning_details = LearningDetail.all
 end
 
 def edit
@@ -34,14 +38,8 @@ end
 def withdraw
 end
 
-def fllowing
-end
-
-def fllowers
-end
 
 def create
-
 end
 
 private

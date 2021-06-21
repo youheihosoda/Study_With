@@ -13,7 +13,8 @@
     <% if user_signed_in? %>
     <nav class="navbar navbar-light bg-warning">
     <div class="container">
-      <a href="/" class="navbar-brand">StudyWith</a>
+      <%= link_to "StudyWith", top_public_study_times_path, class:"navbar-brand" %>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar9">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -21,7 +22,7 @@
         <ul class="navbar-nav box d-flex justify-content-end">
         　<% if user_signed_in? %>
         　<li><%= link_to " TOP", top_public_study_times_path, class:"fas fa-users nav-link text-light"%></li>
-        　<li><%= link_to " プロフィール", class:"fas fa-book-open nav-link text-light"%></li>
+        　<li><%= link_to " プロフィール",public_user_path(current_user), class:"fas fa-book-open nav-link text-light"%></li>
         　<li><%= link_to " 学習時間", public_study_times_path, class:"fas fa-home nav-link text-light"%></li>
         　<li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %></li>
         　<% else %>
