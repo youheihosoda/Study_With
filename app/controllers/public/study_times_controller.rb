@@ -2,13 +2,9 @@ class Public::StudyTimesController < ApplicationController
 
  def index
   @day = params[:day] ? Date.parse(params[:day]) : Time.zone.today
-
-
   beginning_of_month = @day.beginning_of_month
   end_of_month = @day.end_of_month
-
-
-  @study_times = StudyTime.where("updated_at >= ? and updated_at <= ?", beginning_of_month, end_of_month)
+  @study_times = StudyTime.where("updated_at >= ? and updated_at <= ? ", beginning_of_month, end_of_month).where(user_id: current_user.id)
   @study_time_hash = {}
   @study_times.each do |study_time|
    if @study_time_hash[study_time.learning_detail.detail]
@@ -22,9 +18,6 @@ class Public::StudyTimesController < ApplicationController
   @study_time_hash.each do |k,v|
    @study_time_array.push([k,v])
   end
-
-  #@month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
-  #@study_time_months = StudyTime.where(updated_at: @month.all_month)
  end
 
  def start_time
@@ -37,6 +30,11 @@ class Public::StudyTimesController < ApplicationController
   @user = current_user
   @study_times = StudyTime.where.not(end_time:nil)
   render template: 'public/study_times/top'
+ end
+
+ def show
+  @study_time = StudyTime.find(params[:id])
+  @post_comment = PostComment.new
  end
 
  def stop_time
@@ -70,13 +68,10 @@ class Public::StudyTimesController < ApplicationController
   text_ids.each do |text_id|
    @study_time.study_time_texts.create!(study_text_id: text_id)
   end
-
   redirect_to top_public_study_times_path
  end
 
- def new
-   @study_time = StudyTime.find_by(params[:study_time_id])
- end
+
 
 def top
   @user = current_user
@@ -97,9 +92,8 @@ end
   @user = current_user
   @study_time = StudyTime.find(params[:id])
   @study_time.destroy
-  redirect_to top_public_study_times_path
+  redirect_to request.referer
  end
-
 
 
  private

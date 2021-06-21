@@ -5,4 +5,7 @@ class StudyTime < ApplicationRecord
   belongs_to :learning_detail, optional: true
   has_many :photos, dependent: :destroy
   accepts_attachments_for :photo_images, attachment: :image
+  has_many :post_comments, dependent: :destroy
+
+  
 end
