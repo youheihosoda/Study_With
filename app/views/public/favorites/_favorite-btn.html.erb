@@ -1,0 +1,5 @@
+<% if study_time.favorited_by?(current_user) %>
+  ️<%= link_to study_time.favorites.count, public_study_time_favorites_path(study_time), method: :delete, class: "fas fa-heart heart_red" %>
+<% else %>
+  <%= link_to study_time.favorites.count, public_study_time_favorites_path(study_time), method: :post, class: "fas fa-heart heart_blue" %>
+<% end %>
