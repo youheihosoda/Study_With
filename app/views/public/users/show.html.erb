@@ -58,9 +58,12 @@
                 <td><%= attachment_image_tag photo, :image, size:'100x100', class:"post_image" %></td>
               </tr>
                 <% end %>
-              <tr>
-                <td align="center"><%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %></td>
-              </tr>
+               <tr>
+                <td align="center"> <%= link_to public_study_time_path(study_time.id) do %>コメント
+                <%=study_time.post_comments.count %><% end %>&nbsp;&nbsp;
+                <%= render 'public/favorites/favorite-btn', study_time: study_time %>&nbsp;&nbsp;
+                <%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %></td>
+                </tr>
             </table>
         <% end %>
       </div>

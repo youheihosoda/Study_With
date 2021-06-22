@@ -71,12 +71,10 @@ class Public::StudyTimesController < ApplicationController
   redirect_to top_public_study_times_path
  end
 
-
-
 def top
   @user = current_user
   @study_time = StudyTime.new
-  @study_times = StudyTime.all
+  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids])
   @learning_details = LearningDetail.all
 
 end

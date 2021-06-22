@@ -77,3 +77,4 @@ end
 
 gem "chartkick" # 追記
 
+gem 'dotenv-rails'

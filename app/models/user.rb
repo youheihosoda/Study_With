@@ -29,4 +29,5 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  has_many :favorites, dependent: :destroy
 end

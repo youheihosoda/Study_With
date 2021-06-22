@@ -13,10 +13,11 @@
 ActiveRecord::Schema.define(version: 2021_06_17_041215) do
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "user_id"
     t.text "title"
+    t.text "name"
     t.text "body"
     t.boolean "is_deleted", default: false, null: false
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,9 +45,9 @@ ActiveRecord::Schema.define(version: 2021_06_17_041215) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "favorite_id"
-    t.text "post_comment_text"
+    t.integer "study_time_id"
+    t.integer "user_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
