@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
    if current_user
     top_public_study_times_path # ログイン後に遷移するpathを設定
    else
-    admin_orders_path
+    admin_users_path
    end
   end
 

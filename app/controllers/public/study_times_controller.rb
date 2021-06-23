@@ -52,7 +52,7 @@ class Public::StudyTimesController < ApplicationController
   @user = current_user
   @study_time = StudyTime.find(params[:id])
   @study_time.update(study_method: params[:study_form][:study_method], learning_detail_id:  params[:study_form][:learning_detail_id])
-
+  
 
   @study_time.photos.destroy_all
   if params[:study_form][:photo_images].present?
@@ -81,8 +81,8 @@ end
 
 def edit
   @study_time = StudyTime.find(params[:id])
-  @learning_details = LearningDetail.all
-  @study_texts = StudyText.all
+  @learning_details = LearningDetail.where(user_id: current_user.id)
+  @study_texts = StudyText.where(user_id: current_user.id)
   @study_form = StudyForm.new
 end
 

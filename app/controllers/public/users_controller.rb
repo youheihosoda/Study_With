@@ -8,7 +8,6 @@ end
 def show
   @user = User.find(params[:id])
   @study_times = @user.study_times
-  # @study_times = StudyTime.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   @learning_details = LearningDetail.all
 end
 
@@ -33,9 +32,18 @@ def update
 end
 
 def unsubscribe
+
 end
 
-def withdraw
+def withdrawal
+  @user = current_user
+    #現在ログインしているユーザーを@userに格納
+  @user.update(withdrawal: true)
+    #updateで登録情報をInvalidに変更
+  reset_session
+    #sessionIDのresetを行う
+  redirect_to root_path
+    #指定されたrootへのpath
 end
 
 

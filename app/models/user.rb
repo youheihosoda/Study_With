@@ -30,4 +30,9 @@ class User < ApplicationRecord
   end
 
   has_many :favorites, dependent: :destroy
+
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 end
