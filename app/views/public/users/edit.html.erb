@@ -49,8 +49,11 @@
      <%= t.detail %>
      <%= link_to "Destroy", public_learning_detail_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
     <% end %>
+
+
+
     </div>
    </div>
   </div>
  </div>
- <%= link_to "", 'javascript:history.back()', class: "fas fa-undo" %>
+<%= link_to "退会する", unsubscribe_public_users_path(@user.id), class:"btn btn-danger"%>

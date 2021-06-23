@@ -3,8 +3,14 @@
     <tr>
       <td><%= f.text_field :study_method %></td>
       <td><%= f.hidden_field :study_time_id, value: @study_time.id %></td>
+    </tr>
+    <tr>
       <td><%= f.collection_check_boxes(:study_text_ids, @study_texts, :id, :name) %></td>
+    </tr>
+    <tr>
       <td><%= f.select :learning_detail_id, @learning_details.map{|d|[d.detail , d.id]} %></td>
+    </tr>
+    <tr>
       <td><%= f.file_field :photo_images, multiple: true %></td>
     </tr>
   </table><%= f.submit "投稿する" %>
@@ -15,5 +21,5 @@
 学習時間  <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i%>時間
           <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60).to_i%>分
           <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i%>秒
-          
-          
+
+
