@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, controllers: {
+  sessions: 'admins/sessions'
+}
 
   get 'contacts/new'
   get 'contacts/create'
@@ -38,10 +40,16 @@ Rails.application.routes.draw do
    resource :relationships, only: [:create, :destroy]
    get '/search', to: 'searchs#search'
   end
-   resources :contacts, only:[:new, :create]
+   resources :contacts, only:[:new, :create,:index,:update]
 
  namespace :admin do
-  resources :users, only:[:index,:show]
+  resources :users, only:[:index,:show]do
+    patch "withdrawal"
+  end
+  resources :study_times, only:[:destroy,:show]do
+   resources :post_comments, only:[:destroy]
+  end
+  get '/search', to: 'searchs#search'
  end
 
- end
+end

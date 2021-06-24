@@ -7,7 +7,9 @@ end
 
 def show
   @user = User.find(params[:id])
-  @study_times = @user.study_times
+  @study_times = @user.study_times.order(created_at: :desc)
+  study_time_ids = current_user.study_times.map {|study_time|  study_time.id}
+  @study_texts  = StudyTimeText.where(study_time_id: study_time_ids).group(:study_text_id).select('study_text_id,study_time_id,count(study_time_id)as count').order('count').limit(3).map { |item| item.study_text }
   @learning_details = LearningDetail.all
 end
 
@@ -15,8 +17,8 @@ def edit
   @user = User.find(params[:id])
   @study_text = StudyText.new
   @learning_detail = LearningDetail.new
-  @study_texts = StudyText.all
-  @learning_details = LearningDetail.all
+  @study_texts = StudyText.where(user_id: current_user.id)
+  @learning_details = LearningDetail.where(user_id: current_user.id)
    if @user!=current_user
     redirect_to public_users_path(current_user)
    end
@@ -31,14 +33,14 @@ def update
  end
 end
 
-def unsubscribe
-
-end
+  def unsubscribe
+    @user = current_user
+  end
 
 def withdrawal
   @user = current_user
     #現在ログインしているユーザーを@userに格納
-  @user.update(withdrawal: true)
+  @user.update(is_deleted: true)
     #updateで登録情報をInvalidに変更
   reset_session
     #sessionIDのresetを行う

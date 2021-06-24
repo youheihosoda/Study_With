@@ -1,0 +1,7 @@
+<% if admin_signed_in? %>
+    <%= form_tag(admin_search_path, method: :get) do %>
+      <%= text_field_tag 'content' %>
+      <%= select_tag 'model', options_for_select({ "ユーザー検索" => "user", "Email" => "email" }) %>
+      <%= submit_tag '検索' %>
+    <% end %>
+<% end %>

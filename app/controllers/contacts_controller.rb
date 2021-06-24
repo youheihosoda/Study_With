@@ -1,5 +1,9 @@
 class ContactsController < ApplicationController
 
+  def index
+    @contacts = Contact.all
+  end
+
   def new
     @contact = Contact.new
   end
@@ -13,6 +17,12 @@ class ContactsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @contact =Contact.find(params[:id])
+    @contact.update(is_deleted: true)
+    redirect_to request.referer
   end
   private
 
