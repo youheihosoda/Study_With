@@ -1,0 +1,33 @@
+<% hour = ((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i %>
+  <% min = (((@study_time.end_time.to_i-@study_time.start_time.to_i)-(hour*60*60))/60).to_i %>
+  <% sec = ((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i %>
+    <table class=tweet width="500">
+      <tr>
+        <td><%= attachment_image_tag(@study_time.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class:"tweet_icon" )%>
+        &nbsp;&nbsp;<%= @study_time.user.name %> &nbsp;&nbsp; &nbsp;&nbsp;<%= @study_time.updated_at%></td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;<%= @study_time.study_method %></td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;学習内容&nbsp;<%=@study_time.learning_detail.detail %></td>
+      </tr>
+      <tr>
+        <td align="center">使った参考書</td>
+      </tr>
+        <% @study_time.study_texts.each do |study_text| %>
+          <td align="center"><%= study_text.name %></td>
+        <% end %>
+        <% @study_time.photos.each do |photo| %>
+          <tr>
+            <td><%= attachment_image_tag photo, :image, size:'100x100', class:"post_image" %></td>
+          </tr>
+        <% end %>
+          <tr>
+      </tr>
+    </table>
+<%= render 'admin/study_times/index', post_comment: @post_comment, study_time: @study_time, study_times: @study_times %>
+<%= link_to "", 'javascript:history.back()', class: "fas fa-undo" %>

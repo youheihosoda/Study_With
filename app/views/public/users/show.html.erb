@@ -1,7 +1,7 @@
 <div class="background">
   <div class="container">
    <div class="row">
-     <div class="col-sm-4">
+     <div class="col-sm-3">
       <table>
         <tr>
           <td><%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",class:"icon") %></td>
@@ -28,7 +28,7 @@
         </tr>
       </table>
     </div>
-     <div class="col-sm-8">
+     <div class="col-sm-6">
         <% @study_times.each do |study_time| %>
           <% hour = ((study_time.end_time.to_i-study_time.start_time.to_i)/60/60).to_i %>
           <% min = (((study_time.end_time.to_i-study_time.start_time.to_i)-(hour*60*60))/60).to_i %>
@@ -45,7 +45,7 @@
                 <td align="center">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
               </tr>
               <tr>
-                <td align="center">&nbsp;学習内容&nbsp;<%=study_time.learning_detail.detail %></td>
+                <td align="center">&nbsp;学習内容&nbsp;<%=study_time.learning_detail&.detail %></td>
               </tr>
               <tr>
                 <td align="center">使った参考書</td>
@@ -65,6 +65,18 @@
                 <%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %></td>
                 </tr>
             </table>
+        <% end %>
+      </div>
+      <div class="col-sm-3">
+         <table width=300>
+           <tr>
+            <td><%= @user.name%>さんがよく使う参考書</td>
+          </tr>
+            <% @study_texts.each do|study_text| %>
+          <tr>
+            <td><%= study_text.name%></td>
+          </tr>
+          </table>
         <% end %>
       </div>
     </div>

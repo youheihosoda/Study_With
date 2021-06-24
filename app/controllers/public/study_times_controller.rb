@@ -28,7 +28,8 @@ class Public::StudyTimesController < ApplicationController
   @study_time.user_id = current_user.id
   @study_time.save
   @user = current_user
-  @study_times = StudyTime.where.not(end_time:nil)
+  @study_times = StudyTime.where.not(end_time:nil).where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+
   render template: 'public/study_times/top'
  end
 
@@ -52,7 +53,7 @@ class Public::StudyTimesController < ApplicationController
   @user = current_user
   @study_time = StudyTime.find(params[:id])
   @study_time.update(study_method: params[:study_form][:study_method], learning_detail_id:  params[:study_form][:learning_detail_id])
-  
+
 
   @study_time.photos.destroy_all
   if params[:study_form][:photo_images].present?
@@ -74,7 +75,7 @@ class Public::StudyTimesController < ApplicationController
 def top
   @user = current_user
   @study_time = StudyTime.new
-  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids])
+  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
   @learning_details = LearningDetail.all
 
 end
