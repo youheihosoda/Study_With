@@ -1,6 +1,7 @@
 <div class="container">
    <div class="row">
-     <div class="col-sm-2">
+     <div class="col-sm-3">
+      <div class="profile">
         <table>
           <tr>
             <td><%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",class:"icon") %></td>
@@ -10,20 +11,24 @@
           </tr>
           <tr>
              <td><%= link_to public_user_followings_path(current_user) do %>
-          フォロー数:<%= @user.followings.count %>&nbsp;&nbsp;フォロワー数:<%= @user.followers.count %>
+          フォロー数:<%= @user.followings.count %>
+          <% end %>
+          <%= link_to public_user_followers_path(current_user) do %>
+          &nbsp;&nbsp;フォロワー数:<%= @user.followers.count %>
           <% end %></td>
           </tr>
         </table>
-        <div class="timebtn">
+      </div>
+        <div class="timebt">
           <% if @state.nil? || @state == "end" %>
             <%= form_with(model: @study_time, url: start_time_public_study_times_path, local: true )  do |f| %>
             <%= hidden_field_tag :event, "start" %>
-            <%= f.submit 'start', class:"btn btn-success,btn btn-primary btn-lg" %>
+            <%= f.submit '勉強をはじめる', class:"timebtn" %>
             <% end %>
           <% else %>
             <%= form_with(model: @study_time, url: stop_time_public_study_time_path(@study_time), local: true, method: :patch)  do |f| %>
             <%= hidden_field_tag :event, "end" %>
-            <%= f.submit 'end', class:"btn btn-danger,btn btn-primary btn-lg" %>
+            <%= f.submit '勉強を終了', class:"timebtn" %>
             <% end %>
           <% end %>
         </div>
@@ -35,7 +40,7 @@
         <% hour = ((study_time.end_time.to_i-study_time.start_time.to_i)/60/60).to_i %>
         <% min = (((study_time.end_time.to_i-study_time.start_time.to_i)-(hour*60*60))/60).to_i %>
         <% sec = ((study_time.end_time.to_i-study_time.start_time.to_i)%60).to_i %>
-          <table class=tweet width="500">
+          <table class=tweet width="450" >
                   <tr>
                     <td><%= link_to public_user_path(study_time.user) do %>
                           <%= attachment_image_tag(study_time.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class:"tweet_icon" )%>&nbsp;&nbsp;
@@ -49,34 +54,38 @@
                   <tr>
                     <td>&nbsp;&nbsp;<%= study_time.study_method %></td>
                   </tr>
+
                   <tr>
-                    <td align="center">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
+                    <td align="center" class="time">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td></div>
+
                   </tr>
                   <tr>
-                    <td align="center">&nbsp;学習内容&nbsp;<%= study_time.learning_detail&.detail %></td>
+                    <td align="center" class="learning">&nbsp;学習内容&nbsp;<%= study_time.learning_detail&.detail %></td>
                   </tr>
                   <tr>
-                    <td align="center">使った参考書</td>
+                    <td align="center" class="text">使った参考書&nbsp;</td>
                   </tr>
                     <% study_time.study_texts.each do |study_text| %>
-                     <td align="center"><%= study_text.name %></td>
+                  <tr>
+                    <td align="center" class="texts"><%= study_text.name %></td>
                     <% end %>
+                  </tr>
                     <% study_time.photos.each do |photo| %>
                   <tr>
                     <td><%= attachment_image_tag photo, :image, size:'100x100', class:"post_image" %></td>
                   </tr>
                     <% end %>
-                  <tr>
-                    <td align="center"> <%= link_to public_study_time_path(study_time.id) do %>コメント
-                                        <%=study_time.post_comments.count %>
-                                        <% end %>&nbsp;&nbsp;
-                    <%= render 'public/favorites/favorite-btn', study_time: study_time %>&nbsp;&nbsp;
-                    <%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %></td>
-                  </tr>
           </table>
+                    <div class="comment">
+                    <%= link_to public_study_time_path(study_time.id) do %>コメント
+                    <%=study_time.post_comments.count %>
+                    <% end %>&nbsp;&nbsp;
+                    <%= render 'public/favorites/favorite-btn', study_time: study_time %>&nbsp;&nbsp;
+                    <%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
+                    </div>
       <% end %>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
     <%= render 'public/searchs/form' %>
     </div>
    </div>

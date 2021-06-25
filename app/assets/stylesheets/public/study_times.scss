@@ -11,18 +11,38 @@
 
 .timebtn{
   position: absolute;
-  padding-left:70px;
-  padding-top:70px;
+  display: inline-block;
+  text-decoration: none;
+  background: #ff8181;
+  color: white;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #bd6565;
+  transition: .4s;
+  margin:40px 0px;
+  font-size:26px;
 }
 
-.col-sm-4{
-  position: relative;
+.timebtn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  padding:20px;
 }
+
+
 
 .tweet{
     margin: 15px;
-    color: #000000;
-    background: #CD853F;
+    color: white;
+    background-color: #114400;
     border-bottom: solid 6px #B8860B;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
@@ -39,4 +59,92 @@
 
 .post_imaage{
    display:flex;
+}
+
+.profile{
+  margin-top:20px;
+}
+
+.time{
+margin: 2em auto;
+padding: 8px;
+width: 100%;
+color: #606060;
+border: 2px solid black;
+background-color: #fff;
+box-shadow: -2px 5px 5px #ceb4a5;
+border-radius: 15px;
+}
+
+.learning{
+margin: 2em auto;
+padding: 8px;
+width: 100%;
+color: #606060;
+border: 2px solid black;
+background-color: #fff;
+box-shadow: -2px 5px 5px #ceb4a5;
+border-radius: 15px;
+}
+
+.text{
+margin: 2em auto;
+padding: 8px;
+width: 100%;
+color: #606060;
+border: 2px solid black;
+background-color: #fff;
+box-shadow: -2px 5px 5px #ceb4a5;
+border-radius: 15px;
+}
+
+.texts{
+padding: 3px;
+margin: 2em auto;
+width:100%;
+color: #696969;
+background: #ffffe0;
+border-left: solid 15px red;
+}
+
+.comment{
+padding: 3px 5px;
+margin-left: 10px;
+text-align: center;
+margin: 2em auto;
+width:50%;
+color: #696969;
+background: white;
+border-bottom: solid 1px #B8860B;
+}
+
+.introduction{
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 100px 100px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 15px;
+}
+
+.prointo{
+  margin-top: 40px;
+}
+
+.rank{
+  margin-top: 70px;
+  width: 400px;
+  height: 450px;
+  text-align: center;
+  font-size: 25px;
+  position: relative;
+  background: #006633; /* ボックス背景色 */
+  color: #fff; /* 文章色 */
+  border: 8px solid #b2771f; /* 枠線 */
+  border-radius: 3px; /* 角の丸み */
+  box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
 }

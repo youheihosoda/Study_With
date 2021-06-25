@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
+  <div class="search_box">
     <%= form_tag(public_search_path, method: :get) do %>
-      <%= text_field_tag 'content' %>
-      <%= select_tag 'model', options_for_select({ "ユーザー検索" => "user", "投稿内容検索" => "study_time" }) %>
+      <%= text_field_tag 'content' %></br>
+      <%= select_tag 'model', options_for_select({ "ユーザー検索" => "user", "投稿内容検索" => "study_time" }) %></br>
       <%= submit_tag '検索' %>
     <% end %>
+  </div>
 <% end %>

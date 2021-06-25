@@ -1,4 +1,5 @@
 <div class = "main-container">
+  <h1 class="login_font">さあ、勉強をはじめよう！</h1>
   <div class = "login_field">
     <h2>Study withにログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,6 +21,19 @@
               <%= f.submit "Log in" %>
             </div>
           <% end %>
+          <div class="guset_login">
+            <tanle>
+              <tr>ゲストアカウント</tr></br>
+              <tr>
+                <td>Email</td>
+                <td>guest1@guust</td></br>
+              </tr>
+              <tr>
+                <td>Passworld</td>
+                <td>guest1</td></br>
+              </tr>
+            </table>
+          </div>
           <%= render "devise/shared/links" %>
     </div>
 </div>

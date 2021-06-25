@@ -2,38 +2,40 @@
   <div class="container">
    <div class="row">
      <div class="col-sm-3">
-      <table>
-        <tr>
-          <td><%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",class:"icon") %></td>
-        </tr>
-        <tr>
-          <td align="center"><%= @user.name%></td>
-        </tr>
-        <tr>
-        <td><%= render 'public/relationships/follow_button', user: @user %></td>
-        </tr>
-        <tr>
-         <td><%= link_to public_user_followings_path(@user) do %>
-          フォロー数:<%= @user.followings.count %></td>
-          <% end %>
-          <td><%= link_to public_user_followers_path(@user) do %>
-            フォロワー数:<%= @user.followers.count %></td>
+      <div class="prointo">
+        <table>
+          <tr>
+            <td><%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",class:"icon") %></td>
+          </tr>
+          <tr>
+            <td align="center"><%= @user.name%></td>
+          </tr>
+          <tr>
+          <td><%= render 'public/relationships/follow_button', user: @user %></td>
+          </tr>
+          <tr>
+           <td><%= link_to public_user_followings_path(@user) do %>
+            フォロー数:<%= @user.followings.count %>
             <% end %>
-        </tr>
-        <tr>
-          <td align="center"><%= @user.introduction %></td>
-        </tr>
-        <tr>
-          <td align="center"><%=link_to "プロフィール編集", edit_public_user_path(@user) %></td>
-        </tr>
-      </table>
+            <%= link_to public_user_followers_path(@user) do %>
+              フォロワー数:<%= @user.followers.count %></td>
+              <% end %>
+          </tr>
+          <tr>
+            <td align="center" class="introduction"><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td align="center"><%=link_to "プロフィール編集", edit_public_user_path(@user), class: "fas fa-user-edit" %></td>
+          </tr>
+        </table>
+      </div>
     </div>
      <div class="col-sm-6">
         <% @study_times.each do |study_time| %>
           <% hour = ((study_time.end_time.to_i-study_time.start_time.to_i)/60/60).to_i %>
           <% min = (((study_time.end_time.to_i-study_time.start_time.to_i)-(hour*60*60))/60).to_i %>
           <% sec = ((study_time.end_time.to_i-study_time.start_time.to_i)%60).to_i %>
-            <table class=tweet width="500">
+            <table class=tweet width="450">
               <tr>
                 <td><%= attachment_image_tag(study_time.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class:"tweet_icon" )%>
                  &nbsp;&nbsp;<%= @user.name %> &nbsp;&nbsp; &nbsp;&nbsp;<%= study_time.updated_at%>id<%= @user.id%></td>
@@ -42,42 +44,45 @@
                 <td>&nbsp;&nbsp;<%= study_time.study_method %></td>
               </tr>
               <tr>
-                <td align="center">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
+                <td align="center" class="time">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
               </tr>
               <tr>
-                <td align="center">&nbsp;学習内容&nbsp;<%=study_time.learning_detail&.detail %></td>
+                <td align="center" class="learning">&nbsp;学習内容&nbsp;<%=study_time.learning_detail&.detail %></td>
               </tr>
               <tr>
-                <td align="center">使った参考書</td>
+                <td align="center" class="text">使った参考書</td>
               </tr>
                 <% study_time.study_texts.each do |study_text| %>
-                 <td align="center"><%= study_text.name %></td>
+              <tr>
+                 <td align="center" class="texts"><%= study_text.name %></td>
+              </tr>
                 <% end %>
                 <% study_time.photos.each do |photo| %>
               <tr>
                 <td><%= attachment_image_tag photo, :image, size:'100x100', class:"post_image" %></td>
               </tr>
                 <% end %>
-               <tr>
-                <td align="center"> <%= link_to public_study_time_path(study_time.id) do %>コメント
+            </table>
+              <div class="comment">
+                <%= link_to public_study_time_path(study_time.id) do %>コメント
                 <%=study_time.post_comments.count %><% end %>&nbsp;&nbsp;
                 <%= render 'public/favorites/favorite-btn', study_time: study_time %>&nbsp;&nbsp;
                 <%= link_to "削除",  public_study_time_path(study_time.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %></td>
-                </tr>
-            </table>
+              </div>
         <% end %>
       </div>
       <div class="col-sm-3">
-         <table width=300>
+         <table width="300" border="1" class="rank">
            <tr>
-            <td><%= @user.name%>さんがよく使う参考書</td>
+            <td><%= @user.name%>さんがよく使う参考書&nbsp;<i class="fas fa-book-reader"></i></td>
           </tr>
             <% @study_texts.each do|study_text| %>
           <tr>
-            <td><%= study_text.name%></td>
+            <td><%= study_text.name%>&nbsp;<i class="fas fa-book"></i></td>
           </tr>
+          <% end %>
           </table>
-        <% end %>
+
       </div>
     </div>
   </div>
