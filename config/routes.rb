@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
      collection do
       get 'unsubscribe'
+      get 'test'
       patch "withdrawal"
      end
    end

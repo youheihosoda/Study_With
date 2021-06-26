@@ -1,7 +1,11 @@
- <p id="notice"><%= notice %></p>
-
-<h1>学習時間一覧</h1><!-- 追記 -->
-
+<div class="title">
+  <h1>今月の勉強時間&nbsp;&nbsp;<%= @day.year%>年&nbsp;<%= @day.month%>月&nbsp;&nbsp;
+    <%= link_to "<前の月",public_study_times_path(day:@day.prev_month), class: "btn btn-primary" %>
+    <%= link_to "次の月>",public_study_times_path(day:@day.next_month), class: "btn btn-secondary" %>
+  </h1>
+</div>
+<div class="canvas">
   <%= column_chart @study_time_array %>
-<%= link_to "前の月のリンク",public_study_times_path(day:@day.prev_month) %>
-<%= link_to "次の月のリンク",public_study_times_path(day:@day.next_month) %>
+</div>
+
+

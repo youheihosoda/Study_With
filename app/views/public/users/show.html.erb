@@ -8,18 +8,18 @@
             <td><%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",class:"icon") %></td>
           </tr>
           <tr>
-            <td align="center"><%= @user.name%></td>
+            <td align="center" style="font-size : 35px;"><%= @user.name%></td>
           </tr>
           <tr>
           <td><%= render 'public/relationships/follow_button', user: @user %></td>
           </tr>
           <tr>
            <td><%= link_to public_user_followings_path(@user) do %>
-            フォロー数:<%= @user.followings.count %>
-            <% end %>
-            <%= link_to public_user_followers_path(@user) do %>
-              フォロワー数:<%= @user.followers.count %></td>
-              <% end %>
+                  &nbsp;&nbsp;フォロー数:<%= @user.followings.count %>
+                <% end %>
+                <%= link_to public_user_followers_path(@user) do %>
+                  フォロワー数:<%= @user.followers.count %></td>
+                <% end %>
           </tr>
           <tr>
             <td align="center" class="introduction"><%= @user.introduction %></td>
@@ -44,6 +44,13 @@
                 <td>&nbsp;&nbsp;<%= study_time.study_method %></td>
               </tr>
               <tr>
+                <td align="center">
+                   <% study_time.photos.each do |photo| %>
+                   <%= attachment_image_tag photo, :image, size:'200x150', class:"post_image" %>
+                    <% end %>
+                </td>
+              </tr>
+              <tr>
                 <td align="center" class="time">&nbsp;学習時間&nbsp;<%=hour%>時間<%=min%>分<%=sec%>秒&nbsp;</td>
               </tr>
               <tr>
@@ -57,11 +64,7 @@
                  <td align="center" class="texts"><%= study_text.name %></td>
               </tr>
                 <% end %>
-                <% study_time.photos.each do |photo| %>
-              <tr>
-                <td><%= attachment_image_tag photo, :image, size:'100x100', class:"post_image" %></td>
-              </tr>
-                <% end %>
+
             </table>
               <div class="comment">
                 <%= link_to public_study_time_path(study_time.id) do %>コメント
@@ -78,11 +81,10 @@
           </tr>
             <% @study_texts.each do|study_text| %>
           <tr>
-            <td><%= study_text.name%>&nbsp;<i class="fas fa-book"></i></td>
+            <td><%= study_text&.name %></td>
           </tr>
           <% end %>
           </table>
-
       </div>
     </div>
   </div>

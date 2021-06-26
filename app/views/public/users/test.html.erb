@@ -1,0 +1,20 @@
+<div class="text_edit">
+
+     <div class="texts_edit">
+       <h2>使用参考書</h2>
+    <table>
+     <% @study_texts.each do |t| %>
+      <tr>
+       <td><%= t.name %></td>
+        <td><%= link_to "削除", public_study_text_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger btn-sm"%></td>
+      </tr>
+     <% end %>
+     </div>
+     <%= form_with model: @study_text, url: public_study_texts_path, local: true do |f| %>
+      <tr>
+       <td><%= f.text_field :name , class: "text_edit_field"%></td>
+       <td><%= f.submit "参考書を追加", class: "text_edit_field" %></td>
+      </tr>
+     <% end %>
+    </table>
+</div>

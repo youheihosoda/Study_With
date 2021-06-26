@@ -6,7 +6,7 @@ class Public::StudyTextsController < ApplicationController
   @study_text.user_id = current_user.id
   @study_text.save
   @study_texts = StudyText.all
-  redirect_to edit_public_user_path(@user.id)
+  redirect_to request.referer
  end
 
  def destroy

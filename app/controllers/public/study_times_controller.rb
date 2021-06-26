@@ -4,7 +4,7 @@ class Public::StudyTimesController < ApplicationController
   @day = params[:day] ? Date.parse(params[:day]) : Time.zone.today
   beginning_of_month = @day.beginning_of_month
   end_of_month = @day.end_of_month
-  @study_times = StudyTime.where("updated_at >= ? and updated_at <= ? ", beginning_of_month, end_of_month).where(user_id: current_user.id)
+  @study_times = StudyTime.where("updated_at >= ? and updated_at <= ? ", beginning_of_month, end_of_month).where(user_id: current_user.id).where.not(end_time:nil).where.not(learning_detail:nil)
   @study_time_hash = {}
   @study_times.each do |study_time|
    if @study_time_hash[study_time.learning_detail.detail]
@@ -12,7 +12,7 @@ class Public::StudyTimesController < ApplicationController
    else
     @study_time_hash[study_time.learning_detail.detail] = study_time.learning_time
    end
-  end
+ end
 
   @study_time_array = []
   @study_time_hash.each do |k,v|
@@ -55,13 +55,18 @@ class Public::StudyTimesController < ApplicationController
   @study_time.update(study_method: params[:study_form][:study_method], learning_detail_id:  params[:study_form][:learning_detail_id])
 
 
+
   @study_time.photos.destroy_all
   if params[:study_form][:photo_images].present?
-   params[:study_form][:photo_images].each do |post_image|
-    @study_time.photos.create!(image: post_image)
-   end
+    if params[:study_form][:photo_images].count >= 5
+      redirect_to edit_public_study_time_path
+      return
+    elsif
+      params[:study_form][:photo_images].each do |post_image|
+        @study_time.photos.create!(image: post_image)
+      end
+    end
   end
-
 
   params[:study_form][:study_text_ids].delete_at(0)
   text_ids =  params[:study_form][:study_text_ids]
@@ -75,7 +80,7 @@ class Public::StudyTimesController < ApplicationController
 def top
   @user = current_user
   @study_time = StudyTime.new
-  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).where.not(end_time:nil)
   @learning_details = LearningDetail.all
 
 end

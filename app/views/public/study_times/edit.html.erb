@@ -5,7 +5,13 @@
       <td><%= f.hidden_field :study_time_id, value: @study_time.id %></td>
     </tr>
     <tr>
+      <%= form_with model:@study_text, url:public_study_texts_path, local:true do |f| %>
+       <td><%= f.text_field :name , class: "text_edit_field"%>
+           <%= f.submit "参考書を追加", class: "text_edit_field" %>
+       </td>
+     <% end %>
       <td><%= f.collection_check_boxes(:study_text_ids, @study_texts, :id, :name) %></td>
+
     </tr>
     <tr>
       <td><%= f.select :learning_detail_id, @learning_details.map{|d|[d.detail , d.id]} %></td>

@@ -2,3 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.background{
+  margin: 20px;
+}
+
+.prof{
+  padding: 10px;
+}
+
+.chenge{
+  margin: 10px 95px;
+}
+
+.text_edit{
+  margin-top: 30px;
+}
+
+.text_edit_field{
+  margin-top: 10px;
+}
+
+.texts_edit{
+ width: 50%; /* ボックス幅 */
+ background: #006633; /* ボックス背景色 */
+ color: #fff; /* 文章色 */
+ border: 8px solid #b2771f; /* 枠線 */
+ border-radius: 3px; /* 角の丸み */
+ box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
+}
+
+.learning_details_edit{
+  width: 50%; /* ボックス幅 */
+ background: #006633; /* ボックス背景色 */
+ color: #fff; /* 文章色 */
+ border: 8px solid #b2771f; /* 枠線 */
+ border-radius: 3px; /* 角の丸み */
+ box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
+ margin: 20px 0;
+}
+
+.introduction_area{
+  width: 80%;
+  height: 180px;
+  resize: none;
+}
+
+.unsubscribe{
+  margin: 0px 100px;
+}
+
+.withdrawal{
+   height: 20rem;
+  text-align: center;
+  margin-top:120px;
+}

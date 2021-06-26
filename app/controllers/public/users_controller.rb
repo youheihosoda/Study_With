@@ -7,7 +7,7 @@ end
 
 def show
   @user = User.find(params[:id])
-  @study_times = @user.study_times.order(created_at: :desc)
+  @study_times = @user.study_times.order(created_at: :desc).where.not(end_time:nil)
   study_time_ids = current_user.study_times.map {|study_time|  study_time.id}
   @study_texts  = StudyTimeText.where(study_time_id: study_time_ids).group(:study_text_id).select('study_text_id,study_time_id,count(study_time_id)as count').order('count').limit(3).map { |item| item.study_text }
   @learning_details = LearningDetail.all
@@ -27,9 +27,9 @@ end
 def update
   @user = User.find(params[:id])
  if @user.update(user_params)
-  redirect_to public_posts_path(@user.id), notice: "You have updated user successfully."
+  redirect_to public_user_path(@user.id), notice: "You have updated user successfully."
  else
-  render "edit"
+  redirect_to request.referer
  end
 end
 
@@ -48,6 +48,15 @@ def withdrawal
     #指定されたrootへのpath
 end
 
+def test
+  @study_text = StudyText.new
+  @learning_detail = LearningDetail.new
+  @study_texts = StudyText.where(user_id: current_user.id)
+  @learning_details = LearningDetail.where(user_id: current_user.id)
+   if @user!=current_user
+    redirect_to public_users_path(current_user)
+   end
+end
 
 def create
 end
