@@ -1,59 +1,68 @@
 <div class="background">
   <div class="container">
-    <%= form_with model:@user, url:public_user_path(@user), local:true do |f| %>
-    <div class="row">
-     <div class="col-sm-4">
-      <table>
-       <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></td>
-       </tr>
-       <tr>
-        <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></td>
-       </tr>
-      </table>
-     </div>
-      <div class="col-sm-4">
-       <table>
-        <tr>
-         <td><%= f.label :name %></td>
-         <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-         <td><%= f.label :"自己紹介" %></td>
-         <td><%= f.text_area :introduction %></td>
-        </tr>
-       </table><%= f.submit "変更を保存", class:'chenge' %>
-    <% end %>
-
-    <%= form_with model:@study_text, url:public_study_texts_path, local:true do |f| %>
-    <table>
-     <tr>
-      <td><%= f.text_field :name %></td>
-      <td><%= f.submit "参考書を追加" %></td>
-     </tr>
-    <% end %>
-    </table>
-    <% @study_texts.each do |t| %>
-     <%= t.name %>
-     <%= link_to "Destroy", public_study_text_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
-    <% end %>
-
-    <%= form_with model:@learning_detail, url:public_learning_details_path, local:true do |f| %>
-     <tr>
-      <td><%= f.text_field :detail %></td>
-      <td><%= f.submit "学習内容を追加" %></td>
-     </tr>
-    <% end %>
-
-    <% @learning_details.each do |t| %>
-     <%= t.detail %>
-     <%= link_to "Destroy", public_learning_detail_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:'delete' %>
+    <%= form_with model: @user, url: public_user_path(@user), local: true do |f| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <table>
+            <tr>
+              <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "icon" %></td>
+            </tr>
+            <tr>
+              <td><%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "prof" %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-sm-8">
+          <table width="400">
+            <tr>
+              <td><%= f.label :名前 %></td>
+              <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"自己紹介" %></td>
+              <td><%= f.text_area :introduction, class: "introduction_area" %></td>
+            </tr>
+          </table><%= f.submit "変更を保存", class: "chenge btn btn-success" %>
+        </div>
+       </div>
     <% end %>
 
 
+
+      <div class="texts_edit">
+        <h2>使用参考書</h2>
+          <% @study_texts.each do |t| %>
+            <table>
+               <tr>
+                 <td><%= t.name %></td>
+                 <td><%= link_to "削除", public_study_text_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %></td>
+               </tr>
+            </table>
+          <% end %>
+          <%= form_with model: @study_text, url: public_study_texts_path, local: true do |f| %>
+            <%= f.text_field :name, class: "text_edit_field" %>
+            <%= f.submit "参考書を追加", class: "text_edit_field" %>
+          <% end %>
+      </div>
+
+
+    <div class="learning_details_edit">
+      <h2>学習内容</h2>
+
+        <% @learning_details.each do |t| %>
+        <table>
+          <tr>
+            <td><%= t.detail %></td>
+            <td><%= link_to "削除", public_learning_detail_path(t.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %></td>
+          </tr>
+        <% end %>
+         </table>
+        <%= form_with model: @learning_detail, url: public_learning_details_path, local: true do |f| %>
+            <%= f.text_field :detail %>
+            <%= f.submit "学習内容を追加" %>
+        <% end %>
 
     </div>
-   </div>
+    <%= link_to "StudyWithを退会する", unsubscribe_public_users_path(@user), class: "btn btn-danger unsubscribe" %>
+    </div>
   </div>
- </div>
-<%= link_to "退会する", unsubscribe_public_users_path(@user), class: "btn btn-danger"%>

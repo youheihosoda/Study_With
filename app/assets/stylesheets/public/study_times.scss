@@ -41,12 +41,14 @@
 
 .tweet{
     margin: 15px;
+    max-height: 1000px;
     color: white;
     background-color: #114400;
     border-bottom: solid 6px #B8860B;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
     font-size: 17px;
+    word-break : break-all;
 }
 
 
@@ -57,8 +59,9 @@
   object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
 }
 
-.post_imaage{
+.post_img{
    display:flex;
+   padding: 20px 20px;
 }
 
 .profile{
@@ -119,16 +122,17 @@ border-bottom: solid 1px #B8860B;
 }
 
 .introduction{
-  position: relative;
   display: inline-block;
   margin: 1.5em 0;
-  padding: 100px 100px;
-  min-width: 120px;
-  max-width: 100%;
+  width: 250px;
+  height: 145px;
   color: #555;
   font-size: 16px;
   background: #e0edff;
   border-radius: 15px;
+  top: 420px; /* 基準の位置を画面の一番上に指定する */
+  word-break : break-all;
+
 }
 
 .prointo{
@@ -147,4 +151,13 @@ border-bottom: solid 1px #B8860B;
   border: 8px solid #b2771f; /* 枠線 */
   border-radius: 3px; /* 角の丸み */
   box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
+}
+
+.canvas{
+  margin: 300px 200px;
+  max-width: 800px;
+}
+
+.title{
+  margin: 10px 50px;
 }

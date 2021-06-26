@@ -12,5 +12,6 @@ class StudyTime < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
   end
 
+  validates :study_method,length: { maximum: 150 }
 
 end
