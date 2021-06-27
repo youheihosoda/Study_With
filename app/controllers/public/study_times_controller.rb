@@ -80,7 +80,7 @@ class Public::StudyTimesController < ApplicationController
 def top
   @user = current_user
   @study_time = StudyTime.new
-  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).where.not(end_time:nil).page(params[:page]).per(12)
+  @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).where.not(end_time:nil)
   @learning_details = LearningDetail.all
 
 end
