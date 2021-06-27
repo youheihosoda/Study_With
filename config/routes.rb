@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
+  sessions: 'admin/sessions'
 }
 
   get 'contacts/new'
@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
      collection do
       get 'unsubscribe'
-      get 'test'
       patch "withdrawal"
      end
    end

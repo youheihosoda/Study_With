@@ -1,4 +1,4 @@
-<%= form_with model:[study_time, post_comment],url: public_study_time_post_comments_path(study_time.id), local: true do |f| %>
-  <%= f.text_area :comment, size:"90x5" %><br>
+<%= form_with model:[study_time, post_comment],url: public_study_time_post_comments_path(study_time.id), remote: true do |f| %>
+  <%= f.text_area :comment, size:"60x8" %><br>
 <%= f.submit '送信'%>
 <% end %>

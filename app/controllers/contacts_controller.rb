@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.all.order(created_at: :desc)
   end
 
   def new
@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
       redirect_to request.referer
-      flash[:notice] = "お問合せありがとうございます。"
+      flash[:notice] = "お問合せありがとうございました。"
     else
       render :new
     end

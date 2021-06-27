@@ -1,31 +1,40 @@
-<%= form_with(model: @study_form, url: public_study_time_path(@study_time), local: true, method: :patch)  do |f| %>
-  <table>
-    <tr>
-      <td><%= f.text_field :study_method %></td>
-      <td><%= f.hidden_field :study_time_id, value: @study_time.id %></td>
-    </tr>
-    <tr>
+<div class="post">
+    <%= form_with(model: @study_form, url: public_study_time_path(@study_time), local: true, method: :patch)  do |f| %>
+        <table>
+            <tr>
+                <td><h1>学習を投稿しよう</h1></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :study_method, class: "study_method_field" %></td>
+                <td><%= f.hidden_field :study_time_id, value: @study_time.id %></td>
+            </tr>
+            <tr>
+                <td><%= f.file_field :photo_images, multiple: true %></td>
+            </tr>
+            <tr>
+                <td align="center">学習内容
+                    <%= f.select :learning_detail_id, @learning_details.map{|d|[d.detail , d.id]} %>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">使用参考書&nbsp;<%= f.collection_check_boxes(:study_text_ids, @study_texts, :id, :name) %></td>
+            </tr>
+            <tr>
+                <td align="center">学習時間<%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i%>時間
+                <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60).to_i%>分
+                <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i%>秒</td>
+            </tr>
+        </table><%= f.submit "投稿する", class: "sub" %>
+    <%end%>
       <%= form_with model:@study_text, url:public_study_texts_path, local:true do |f| %>
-       <td><%= f.text_field :name , class: "text_edit_field"%>
-           <%= f.submit "参考書を追加", class: "text_edit_field" %>
-       </td>
-     <% end %>
-      <td><%= f.collection_check_boxes(:study_text_ids, @study_texts, :id, :name) %></td>
+          <%= f.text_field :name , class: "text_edit_field2"%>
+          <%= f.submit "参考書を追加", class: "text_edit_field2" %>
+      <% end %>
+      <%= form_with model: @learning_detail, url: public_learning_details_path, local: true do |f| %>
+          <%= f.text_field :detail %>
+          <%= f.submit "学習内容を追加" %>
+      <% end %>
+</div>
 
-    </tr>
-    <tr>
-      <td><%= f.select :learning_detail_id, @learning_details.map{|d|[d.detail , d.id]} %></td>
-    </tr>
-    <tr>
-      <td><%= f.file_field :photo_images, multiple: true %></td>
-    </tr>
-  </table><%= f.submit "投稿する" %>
-<%end%>
-
-
-
-学習時間  <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i%>時間
-          <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60).to_i%>分
-          <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i%>秒
 
 

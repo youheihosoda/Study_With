@@ -24,11 +24,8 @@
             </tr>
           </table><%= f.submit "変更を保存", class: "chenge btn btn-success" %>
         </div>
-       </div>
+      </div>
     <% end %>
-
-
-
       <div class="texts_edit">
         <h2>使用参考書</h2>
           <% @study_texts.each do |t| %>
@@ -44,11 +41,9 @@
             <%= f.submit "参考書を追加", class: "text_edit_field" %>
           <% end %>
       </div>
-
-
+      
     <div class="learning_details_edit">
       <h2>学習内容</h2>
-
         <% @learning_details.each do |t| %>
         <table>
           <tr>
@@ -61,7 +56,6 @@
             <%= f.text_field :detail %>
             <%= f.submit "学習内容を追加" %>
         <% end %>
-
     </div>
     <%= link_to "StudyWithを退会する", unsubscribe_public_users_path(@user), class: "btn btn-danger unsubscribe" %>
     </div>

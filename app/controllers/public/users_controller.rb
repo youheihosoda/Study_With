@@ -48,18 +48,6 @@ def withdrawal
     #指定されたrootへのpath
 end
 
-def test
-  @study_text = StudyText.new
-  @learning_detail = LearningDetail.new
-  @study_texts = StudyText.where(user_id: current_user.id)
-  @learning_details = LearningDetail.where(user_id: current_user.id)
-   if @user!=current_user
-    redirect_to public_users_path(current_user)
-   end
-end
-
-def create
-end
 
 private
 def user_params

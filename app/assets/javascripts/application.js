@@ -13,12 +13,24 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-
+//= require jquery
 //= require rails-ujs
+//= require jquery.jscroll.min.js
+
+//= require chartkick
+//= require Chart.bundle
+
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
+// $(document).on('turbolinks:load', function() {
+//   $('.jscroll').jscroll({
+//     nextSelector: 'a[rel=next].page-link', //次に表示させたいページのリンク先
+//     contentSelector: '.jscroll' //[jscroll]に追加表示させる
+//   });
+// });
 
-//= require chartkick
-//= require Chart.bundle
+
+
+

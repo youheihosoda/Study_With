@@ -10,10 +10,10 @@
 #    email: 'test@test.com',
 #    password: 'testtest',)
 
-# User.create!(
-#    name: 'guest1',
-#    email: 'guest1@guest.com',
-#    password: 'guest1',)
+User.create!(
+  name: 'guest1',
+  email: 'guest1@guest.com',
+  password: 'guest1',)
 
 # User.create!(
 #    name: 'guest2',
