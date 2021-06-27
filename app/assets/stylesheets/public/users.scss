@@ -23,22 +23,23 @@
 }
 
 .texts_edit{
- width: 50%; /* ボックス幅 */
+ width: 40%; /* ボックス幅 */
  background: #006633; /* ボックス背景色 */
  color: #fff; /* 文章色 */
  border: 8px solid #b2771f; /* 枠線 */
  border-radius: 3px; /* 角の丸み */
  box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
+ margin: 10px 300px;
 }
 
 .learning_details_edit{
-  width: 50%; /* ボックス幅 */
+  width: 40%; /* ボックス幅 */
  background: #006633; /* ボックス背景色 */
  color: #fff; /* 文章色 */
  border: 8px solid #b2771f; /* 枠線 */
  border-radius: 3px; /* 角の丸み */
  box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
- margin: 20px 0;
+ margin: 10px 300px;
 }
 
 .introduction_area{
@@ -48,7 +49,7 @@
 }
 
 .unsubscribe{
-  margin: 0px 100px;
+  margin: 0px 450px;
 }
 
 .withdrawal{

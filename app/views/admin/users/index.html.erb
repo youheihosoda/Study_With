@@ -1,6 +1,6 @@
-
 <h1>会員一覧</h1>
-<table class="table">
+<%= render 'admin/searchs/form' %>
+<table class="table user_index">
    <thead>
     <tr>
       <th scope="col">ID</th>
@@ -26,9 +26,9 @@
             <%end%>
       </tr>
     <% end %>
-    <%= render 'admin/searchs/form' %>
 </table>
-<%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %>
+
+
 
 
 

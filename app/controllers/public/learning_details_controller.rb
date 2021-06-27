@@ -6,7 +6,7 @@ class Public::LearningDetailsController < ApplicationController
     @learning_detail.user_id = current_user.id
     @learning_detail.save
     @learning_details = LearningDetail.all
-    redirect_to edit_public_user_path(@user.id)
+    redirect_to request.referer
   end
 
   def destroy

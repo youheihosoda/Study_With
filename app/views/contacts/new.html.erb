@@ -1,17 +1,32 @@
+<% flash.each do |message_type, message| %>
+  <div class="cotact_message">
+      <h2><%= message %></h2>
+    <% end %>
+  </div>
+<div class="contact_form">
+
+
   <%= form_with model: @contact, local:true do |f| %>
-    <table>
+
+
+    <table width="600">
+      <th>
+        <td><h2>お問い合わせフォーム</h2></td>
+      </th>
       <tr>
         <td><%= f.label :"お名前"%></td>
-         <td><%= f.text_field :name %></td>
+         <td>&nbsp;&nbsp;<%= f.text_field :name, size:"25x10" %></td>
       </tr>
       <tr>
          <td><%= f.label :"メールアドレス"%></td>
-         <td><%= f.email_field :email %></td>
+         <td>&nbsp;&nbsp;<%= f.email_field :email, size:"25x10" %></td>
       </tr>
       <tr>
          <td><%= f.label :"お問合せ内容"%></td>
-         <td><%= f.text_area :body %></td>
+         <td>&nbsp;&nbsp;<%= f.text_area :body,size:"50x10" %></td>
       </tr>
     </table>
-      <%= f.submit "送信"%>
+      <%= f.submit "お問い合わせを送信する", class: "sent btn btn-primary" %>
   <% end %>
+
+</div>
