@@ -43,8 +43,8 @@ class Public::StudyTimesController < ApplicationController
   return redirect_to public_users_path if ((@state == "end") && (params[:event] == "end"))
   @state = params[:event]
   @study_time.update(end_time: Time.now.to_i, learning_time: @study_time.end_time.to_i-@study_time.start_time.to_i)
-  # @study_time.update(learning_time: (@study_time.end_time.to_i-@study_time.start_time.to_i)/60.floor)
-  @study_time.update(learning_time: @study_time.end_time.to_i-@study_time.start_time.to_i)
+  @study_time.update(learning_time: (@study_time.end_time.to_i-@study_time.start_time.to_i)/60.floor)
+  # @study_time.update(learning_time: @study_time.end_time.to_i-@study_time.start_time.to_i)
   @user = current_user
   redirect_to edit_public_study_time_path(study_time_id:params[:id])
  end
