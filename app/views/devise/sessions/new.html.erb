@@ -22,18 +22,22 @@
             </div>
           <% end %>
           <div class="guset_login">
-            <tanle>
-              <tr>ゲストアカウント</tr></br>
+            <table width="300">
+              <tr>ゲストアカウント</tr>
               <tr>
                 <td>Email</td>
-                <td>guest1@guest.com</td></br>
+              <tr>
+                <td>guest1@guest.com</td>
               </tr>
               <tr>
                 <td>Passworld</td>
-                <td>guest1</td></br>
+              </tr>
+              <tr>
+                <td>guest1</td>
               </tr>
             </table>
           </div>
           <%= render "devise/shared/links" %>
+          <%= link_to "管理者画面はこちらから", admin_session_path, class: "btn btn-danger btn-lg" %>
     </div>
 </div>
