@@ -21,6 +21,11 @@
 ## ER図
 ![Copy of Untitled Diagram](https://user-images.githubusercontent.com/81734125/123750790-f68bb100-d8f1-11eb-87b1-cf53f16e3ecf.jpg)
 
+##アプリケーション設計定義書
+https://docs.google.com/spreadsheets/d/1191qa6AQcTr0wb5cYCp1y-i_WKJ4hSew/edit#gid=1462510608
+
+##ワイヤーフレーム
+https://cacoo.com/diagrams/So5ydhTHsJvtzrD6/7DF0A?reload_rt=1624949630619_0&
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1n6OaSUamgUvcx_C02_v-WS2v8gQuSR4Akp7YiVLtKWo/edit#gid=1447072994
