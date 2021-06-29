@@ -18,8 +18,7 @@
 学習開始前や学習意欲が下がってしまった時
 
 ## 設計書
-ER図
-<img width="503" alt="スクリーンショット 2021-06-29 11 37 06" src="https://user-images.githubusercontent.com/81734125/123728664-97687500-d8ce-11eb-9d3f-1f3b906b9567.png">
+## ER図
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1n6OaSUamgUvcx_C02_v-WS2v8gQuSR4Akp7YiVLtKWo/edit#gid=1447072994
