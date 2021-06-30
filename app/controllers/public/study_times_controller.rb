@@ -107,4 +107,5 @@ end
     params.permit(:study_method,:study_text_ids, :study_time_id,:learning_detail_id, photos_images:[])
   end
 
+
 end
