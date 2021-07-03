@@ -20,9 +20,11 @@
                 <td align="center">使用参考書&nbsp;<%= f.collection_check_boxes(:study_text_ids, @study_texts, :id, :name) %></td>
             </tr>
             <tr>
-                <td align="center">学習時間<%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i%>時間
-                <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)/60).to_i%>分
-                <%=((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i%>秒</td>
+                <td align="center">学習時間<% hour = ((@study_time.end_time.to_i-@study_time.start_time.to_i)/60/60).to_i %>
+                <% min = (((@study_time.end_time.to_i-@study_time.start_time.to_i)-(hour*60*60))/60).to_i %>
+                <% sec = ((@study_time.end_time.to_i-@study_time.start_time.to_i)%60).to_i %>
+                <%= hour %>時間 <%= min %>分 <%= sec %>秒
+                </td>
             </tr>
         </table><%= f.submit "投稿する", class: "sub" %>
     <%end%>
