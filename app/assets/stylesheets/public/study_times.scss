@@ -163,8 +163,10 @@ border-bottom: solid 1px #B8860B;
 }
 
 .post{
-  position: absolute;
-  margin: 50px 750px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .study_method_field{
