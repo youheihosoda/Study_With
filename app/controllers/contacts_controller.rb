@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-
   def index
     @contacts = Contact.all.order(created_at: :desc)
   end
@@ -20,10 +19,11 @@ class ContactsController < ApplicationController
   end
 
   def update
-    @contact =Contact.find(params[:id])
+    @contact = Contact.find(params[:id])
     @contact.update(is_deleted: true)
     redirect_to request.referer
   end
+
   private
 
   def contact_params

@@ -9,9 +9,8 @@ class StudyTime < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   def favorited_by?(user)
-		favorites.where(user_id: user.id).exists?
+    favorites.where(user_id: user.id).exists?
   end
 
-  validates :study_method,length: { maximum: 150 }
-
+  validates :study_method, length: { maximum: 150 }
 end

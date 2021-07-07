@@ -4,7 +4,6 @@ class CreateFavorites < ActiveRecord::Migration[5.2]
       t.integer :study_time_id
       t.integer :user_id
 
-
       t.timestamps
     end
   end

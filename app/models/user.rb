@@ -17,8 +17,6 @@ class User < ApplicationRecord
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
 
-
-
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -34,9 +32,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
 
-  validates :introduction,length: { maximum: 160 }
-  validates :name,length: { maximum: 12 }
+  validates :introduction, length: { maximum: 160 }
+  validates :name, length: { maximum: 12 }
 end
