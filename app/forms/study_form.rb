@@ -8,7 +8,6 @@ class StudyForm
   attribute :study_text_ids
   attribute :photo_images
 
-
   # attr_accessor :study_text_ids, :study_method, :study_time_id, :learning_detail_id, :photo_ids
   validates :study_text_ids, presence: true, on: :update
   validates :study_method, presence: true, on: :update

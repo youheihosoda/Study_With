@@ -1,5 +1,4 @@
 class Admin::SearchsController < ApplicationController
-
   def search
     # viewのform_tagにて
     # 選択したmodelの値を@modelに代入。
@@ -14,6 +13,7 @@ class Admin::SearchsController < ApplicationController
   end
 
   private
+
   def search_for(model, content, method)
     # 選択したモデルがuserだったら
     if model == 'user'

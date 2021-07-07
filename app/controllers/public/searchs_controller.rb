@@ -13,6 +13,7 @@ class Public::SearchsController < ApplicationController
   end
 
   private
+
   def search_for(model, content, method)
     # 選択したモデルがuserだったら
     if model == 'user'
