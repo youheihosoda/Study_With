@@ -17,7 +17,6 @@
 ### 主な利用シーン
 学習開始前や学習意欲が下がってしまった時
 
-## 設計書
 ## ER図
 ![Copy of Untitled Diagram](https://user-images.githubusercontent.com/81734125/123750790-f68bb100-d8f1-11eb-87b1-cf53f16e3ecf.jpg)
 
