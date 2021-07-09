@@ -3,11 +3,13 @@ class Public::StudyTimesController < ApplicationController
     @day = params[:day] ? Date.parse(params[:day]) : Time.zone.today
     beginning_of_month = @day.beginning_of_month
     end_of_month = @day.end_of_month
-    @study_times = StudyTime.where("updated_at >= ? and updated_at <= ? ", beginning_of_month, end_of_month).where(user_id: current_user.id).where.not(end_time: nil).where.not(learning_detail: nil)
+    @study_times = StudyTime.where("updated_at >= ? and updated_at <= ? ", beginning_of_month, end_of_month).where(
+    user_id: current_user.id).where.not(end_time: nil).where.not(learning_detail: nil)
     @study_time_hash = {}
     @study_times.each do |study_time|
       if @study_time_hash[study_time.learning_detail.detail]
-        @study_time_hash[study_time.learning_detail.detail] = @study_time_hash[study_time.learning_detail.detail] + study_time.learning_time
+        @study_time_hash[study_time.learning_detail.detail] = @study_time_hash[
+        study_time.learning_detail.detail] + study_time.learning_time
       else
         @study_time_hash[study_time.learning_detail.detail] = study_time.learning_time
       end
@@ -27,7 +29,9 @@ class Public::StudyTimesController < ApplicationController
     @study_time.user_id = current_user.id
     @study_time.save
     @user = current_user
-    @study_times = StudyTime.where.not(end_time: nil).where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).page(params[:page]).per(10)
+    @study_times = StudyTime.where.not(end_time: nil).where(
+    user_id: [current_user.id, *current_user.following_ids]).order(
+    created_at: :desc).page(params[:page]).per(10)
 
     render template: 'public/study_times/top'
   end
@@ -51,7 +55,8 @@ class Public::StudyTimesController < ApplicationController
   def update
     @user = current_user
     @study_time = StudyTime.find(params[:id])
-    @study_time.update(study_method: params[:study_form][:study_method], learning_detail_id: params[:study_form][:learning_detail_id])
+    @study_time.update(study_method: params[:study_form][:study_method],
+    learning_detail_id: params[:study_form][:learning_detail_id])
 
     @study_time.photos.destroy_all
     if params[:study_form][:photo_images].present?
@@ -77,7 +82,8 @@ class Public::StudyTimesController < ApplicationController
   def top
     @user = current_user
     @study_time = StudyTime.new
-    @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).where.not(end_time: nil).page(params[:page]).per(10)
+    @study_times = StudyTime.where(user_id: [current_user.id, *current_user.following_ids]).order(
+    created_at: :desc).where.not(end_time: nil).page(params[:page]).per(10)
     @learning_details = LearningDetail.all
   end
 
