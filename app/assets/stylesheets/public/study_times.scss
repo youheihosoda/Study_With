@@ -164,10 +164,9 @@
 }
 
 .post{
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  top: 50%;
+  left: 20%;
 }
 
 .study_method_field{
@@ -177,7 +176,12 @@
 }
 
 .sub{
-  margin:10px 120px;
+  margin: 10px 350px;
+}
+
+.learning_texts{
+  margin: 10px 250px;
+  width: 100%;
 }
 
 .text_edit_field2{
@@ -199,3 +203,8 @@
 nav.pagination {
   display: none;
 }
+
+.learning_choice{
+  margin-top: 10px;
+}
+
