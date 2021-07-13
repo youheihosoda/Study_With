@@ -7,7 +7,7 @@
                     <table class=tweet width="450">
                         <tr>
                             <td><%= attachment_image_tag(@study_time.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class:"tweet_icon" )%>
-                            &nbsp;&nbsp;<%= @study_time.user.name %> &nbsp;&nbsp; &nbsp;&nbsp;<%= @study_time.updated_at%></td>
+                            &nbsp;&nbsp;<%= @study_time.user.name %> &nbsp;&nbsp; &nbsp;&nbsp;<%= @study_time.updated_at.strftime("%Y-%m-%d %H:%M")%></td>
                         </tr>
                         <tr>
                             <td>&nbsp;&nbsp;<%= @study_time.study_method %></td>

@@ -11,7 +11,7 @@
                         <%= link_to public_user_path(study_time.user) do %>
                             <%= study_time.user.name %>&nbsp;&nbsp;
                         <% end %>
-                        <%= study_time.updated_at%>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= study_time.updated_at.strftime("%Y-%m-%d %H:%M")%>
                     </td>
                 </tr>
                 <tr>

@@ -9,9 +9,9 @@
                                 <%= attachment_image_tag(study_time.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class:"tweet_icon" )%>&nbsp;&nbsp;
                             <% end %>
                             <%= link_to public_user_path(study_time.user) do %>
-                                <%= study_time.user.name %>&nbsp;&nbsp;
+                                <%= study_time.user.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <% end %>
-                            <%= study_time.updated_at%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= study_time.updated_at.strftime("%Y-%m-%d %H:%M")%>
                         </td>
                     </tr>
                     <tr>
@@ -55,6 +55,6 @@
         <% end %>
     <%= paginate study_times %>
 </div>
- 
+
 
 
