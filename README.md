@@ -1,5 +1,5 @@
 # Study With
-<div style="text-align: center;">![Animated GIF-downsized (2)](https://user-images.githubusercontent.com/81734125/125898509-8c6b708b-4ac3-430f-8dee-5fb20f994c71.gif)</div>
+![Animated GIF-downsized (2)](https://user-images.githubusercontent.com/81734125/125898509-8c6b708b-4ac3-430f-8dee-5fb20f994c71.gif)
 
 ## サイト概要
 勉強時間をストップウォッチ機能を使って投稿することができます。また勉強内容も同時に投稿することができ、自分がどのように勉強しているのかを発信するとともに、他の人がどのように勉強をしているのかを知ることができます。また記録した時間は項目ごとにグラフ化され、後からどのくらい勉強をしたのかを見返すこともできます。投稿には、コメント機能やいいね機能が付いており、他のユーザーと頑張りを認め合ったり、効率の良い勉強方法について交流することができるようになっています。
