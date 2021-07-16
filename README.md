@@ -16,7 +16,8 @@
 
 ### 主な利用シーン
 学習開始前や学習意欲が下がってしまった時
-https://user-images.githubusercontent.com/81734125/125896050-efb337c9-a6d4-4041-b50c-4310c2af2cd2.mp4
+![Animated GIF-downsized](https://user-images.githubusercontent.com/81734125/125897035-ffbd64d7-80f4-4e81-bce1-1b8f24338d59.gif)
+
 ## ER図
 ![Copy of Untitled Diagram](https://user-images.githubusercontent.com/81734125/123750790-f68bb100-d8f1-11eb-87b1-cf53f16e3ecf.jpg)
 
