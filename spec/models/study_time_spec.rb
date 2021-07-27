@@ -7,8 +7,8 @@ describe StudyTime do
 	    end
 
 	    it "study_methodが150文字以上であれば登録できないこと" do
-     　study_time = build(:study_time, study_method: "a" * 151)
-     　study_time.valid?
+	      study_time = build(:study_time, study_method: "a"*151)
+	      expect(study_time).to be_invalid
       end
   end
 end
