@@ -51,7 +51,7 @@ describe User do
      expect(user).to be_valid
    end
 
-   # 10
+   
    it "passwordが5文字以下である場合は登録できないこと" do
      user = build(:user, password: "12345", password_confirmation: "12345")
      user.valid?
