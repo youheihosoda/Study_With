@@ -13,7 +13,7 @@ describe LearningDetail do
 
       it "detailがない場合は登録できないこと" do
         learning_detail = build(:learning_detail, detail: "")
-        learning_detail.valid?
+        expect(learning_detail).to be_invalid
      end
   end
 end
