@@ -13,7 +13,7 @@ describe StudyText do
       
       it "nameがない場合は登録できないこと" do
         study_text = build(:study_text, name: "")
-        study_text.valid?
+        expect(study_text).to be_invalid
      end
   end
 end
