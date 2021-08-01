@@ -16,4 +16,20 @@ describe StudyText do
         expect(study_text).to be_invalid
      end
   end
+  
+  describe 'アソシエーションのテスト' do
+    context 'モデルとの関係' do
+    	it 'StudyTimeTextモデルと1:Nになっている' do
+        expect(StudyText.reflect_on_association(:study_time_texts).macro).to eq :has_many
+      end
+      
+      it 'StudyTimeモデルと1:Nになっている' do
+        expect(StudyText.reflect_on_association(:study_times).macro).to eq :has_many
+      end
+
+      it 'UserモデルとN:1になっている' do
+        expect(StudyText.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+  end
 end

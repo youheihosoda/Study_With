@@ -17,4 +17,16 @@ describe PostComment do
         expect(post_comment.errors[:comment]).to be_present
      end
   end
+  
+  describe 'アソシエーションのテスト' do
+    context 'モデルとの関係' do
+    	it 'UserモデルとN:1になっている' do
+        expect(PostComment.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+      
+      it 'StudyTimeモデルとN:1になっている' do
+        expect(PostComment.reflect_on_association(:study_time).macro).to eq :belongs_to
+      end
+    end
+  end
 end

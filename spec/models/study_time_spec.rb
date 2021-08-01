@@ -11,4 +11,36 @@ describe StudyTime do
 	      expect(study_time).to be_invalid
       end
   end
+  
+  describe 'アソシエーションのテスト' do
+    context 'モデルとの関係' do
+    	it 'StudyTimeTextモデルと1:Nになっている' do
+        expect(StudyTime.reflect_on_association(:study_time_texts).macro).to eq :has_many
+      end
+      
+      it 'StudyTextモデルと1:Nになっている' do
+        expect(StudyTime.reflect_on_association(:study_texts).macro).to eq :has_many
+      end
+      
+      it 'Photoモデルと1:Nになっている' do
+        expect(StudyTime.reflect_on_association(:photos).macro).to eq :has_many
+      end
+      
+      it 'PostCommentモデルと1:Nになっている' do
+        expect(StudyTime.reflect_on_association(:post_comments).macro).to eq :has_many
+      end
+      
+      it 'Favoritesモデルと1:Nになっている' do
+        expect(StudyTime.reflect_on_association(:favorites).macro).to eq :has_many
+      end
+      
+      it 'StudyTimeTextモデルとN:1になっている' do
+        expect(StudyTime.reflect_on_association(:learning_detail).macro).to eq :belongs_to
+      end
+      
+      it 'UserモデルとN:1になっている' do
+        expect(StudyTime.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+  end
 end

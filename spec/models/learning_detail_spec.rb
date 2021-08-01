@@ -16,4 +16,16 @@ describe LearningDetail do
         expect(learning_detail).to be_invalid
      end
   end
+
+  describe 'アソシエーションのテスト' do
+    context 'モデルとの関係' do
+    	it 'StudyTimeモデルと1:Nになっている' do
+        expect(LearningDetail.reflect_on_association(:study_times).macro).to eq :has_many
+      end
+
+      it 'UserモデルとN:1になっている' do
+        expect(LearningDetail.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+  end
 end
