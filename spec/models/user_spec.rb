@@ -58,6 +58,34 @@ describe User do
      expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
    end
 
-end
+  end
+  
+  describe 'アソシエーションのテスト' do
+    context 'モデルとの関係' do
+      it 'StudyTimeモデルと1:Nになっている' do
+        expect(User.reflect_on_association(:study_times).macro).to eq :has_many
+      end
+      
+      it 'StudyTextモデルと1:Nになっている' do
+        expect(User.reflect_on_association(:study_texts).macro).to eq :has_many
+      end
+      
+      it 'LearningDetailモデルと1:Nになっている' do
+        expect(User.reflect_on_association(:learning_details).macro).to eq :has_many
+      end
+      
+      it 'PostCommentモデルと1:Nになっている' do
+        expect(User.reflect_on_association(:post_comments).macro).to eq :has_many
+      end
+      
+      it 'Relationshipモデルと1:Nになっている' do
+        expect(User.reflect_on_association(:relationships).macro).to eq :has_many
+      end
+      
+      it 'StudyTimeモデルと1:Nになっている' do
+        expect(User.reflect_on_association(:study_times).macro).to eq :has_many
+      end
+    end
+  end
 end
 
